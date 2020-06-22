@@ -6,15 +6,19 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Lenovo
  */
 public class profillanjutan extends javax.swing.JFrame {
-
+    String filename;
     /**
      * Creates new form profillanjutan
      */
@@ -45,6 +49,14 @@ public class profillanjutan extends javax.swing.JFrame {
     public void klikSimpan(ActionListener action){
         btnSimpan.addActionListener(action);
     }
+    
+    public void klikLaporan(ActionListener action){
+        btnLapor.addActionListener(action);
+    }
+    
+    public String getFilename() {
+        return filename;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,13 +77,10 @@ public class profillanjutan extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jenisUsaha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         thnDiri = new javax.swing.JComboBox<>();
         btnSimpan = new javax.swing.JButton();
-        proposal = new javax.swing.JTextField();
-        keuangan = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        lbl = new javax.swing.JTextField();
+        up = new javax.swing.JButton();
         usaha = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -232,24 +241,6 @@ public class profillanjutan extends javax.swing.JFrame {
         jLabel4.setText("Jenis Usaha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel5.setText("Proposal Usaha");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Unggah file");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 110, 30));
-
         thnDiri.setEditable(true);
         thnDiri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         thnDiri.addActionListener(new java.awt.event.ActionListener() {
@@ -267,22 +258,26 @@ public class profillanjutan extends javax.swing.JFrame {
         btnSimpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSimpan.setOpaque(true);
         getContentPane().add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 260, 30));
-        getContentPane().add(proposal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 150, 30));
-        getContentPane().add(keuangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, 30));
+        getContentPane().add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, 30));
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 255));
-        jButton3.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Unggah file");
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setOpaque(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        up.setBackground(new java.awt.Color(102, 102, 255));
+        up.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
+        up.setForeground(new java.awt.Color(255, 255, 255));
+        up.setText("Unggah file");
+        up.setContentAreaFilled(false);
+        up.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        up.setOpaque(true);
+        up.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                upMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 110, 30));
+        up.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upActionPerformed(evt);
+            }
+        });
+        getContentPane().add(up, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 110, 30));
 
         usaha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +291,7 @@ public class profillanjutan extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 137, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel7.setText("Riwayat Keuangan 3 Bulan Terakhir");
+        jLabel7.setText("Proposal Usaha & Riwayat Keuangan 3 Bulan Terakhir");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
@@ -334,17 +329,30 @@ public class profillanjutan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_thnDiriActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_upActionPerformed
 
     private void usahaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usahaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usahaActionPerformed
+
+    private void upMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upMouseClicked
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("pdf", "pdf");
+        chooser.setDialogTitle("Pilih file laporan pertanggung jawaban dana (PDF)");
+        chooser.setFileFilter(filter);
+        chooser.showOpenDialog(null);
+        File select = chooser.getSelectedFile();
+        filename = select.getAbsolutePath();
+        try{
+            lbl.setText(filename);
+            System.out.println(filename);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_upMouseClicked
 
     /**
      * @param args the command line arguments
@@ -389,20 +397,17 @@ public class profillanjutan extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfil;
     private javax.swing.JButton btnSimpan;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jenisUsaha;
-    private javax.swing.JTextField keuangan;
-    private javax.swing.JTextField proposal;
+    private javax.swing.JTextField lbl;
     private javax.swing.JComboBox<String> thnDiri;
+    private javax.swing.JButton up;
     private javax.swing.JTextField usaha;
     // End of variables declaration//GEN-END:variables
 
@@ -411,11 +416,7 @@ public class profillanjutan extends javax.swing.JFrame {
     }
 
     public JTextField getKeuangan() {
-        return keuangan;
-    }
-
-    public JTextField getProposal() {
-        return proposal;
+        return lbl;
     }
 
     public JComboBox<String> getThnDiri() {

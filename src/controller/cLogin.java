@@ -8,7 +8,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.bantuan;
 import model.dataAkun;
+import model.lapora;
 import model.pengajuan;
 import model.ukm;
 import view.Login;
@@ -21,6 +23,8 @@ public class cLogin {
     dataAkun akun = new dataAkun();
     ukm ukmModel = new ukm();
     pengajuan ajuanModel = new pengajuan();
+    lapora lapor = new lapora();
+    bantuan bantu = new bantuan();
 //    Connection con;
 //    Statement stat;
 //    ResultSet rs;
@@ -36,8 +40,8 @@ public class cLogin {
 //            System.out.println("admin");
 //        }
 //        else{
-            ukmModel.ukmDB(dataAkun.getId());
-            ajuanModel.pengajuanDB(dataAkun.getId());
+
+
 //        }
 
 //        koneksi.connect();
@@ -77,6 +81,11 @@ public class cLogin {
     public void login(){
         int role;
         akun.akunUser(view.getUsername().getText(),view.getPass().getText());
+        ukmModel.ukmDB(dataAkun.getId());
+            ajuanModel.pengajuanDB(dataAkun.getId());
+            lapor.laporanGet(dataAkun.getId());
+            akun.akunUser(dataAkun.getUsername(), dataAkun.getPassword());
+            bantu.getBantuan(dataAkun.getId());
         if(view.getUsername().getText().equals(dataAkun.getUsername()) && view.getPass().getText().equals(dataAkun.getPassword()) && dataAkun.getRole().equalsIgnoreCase("1")){
             controller.cDashboard home = new controller.cDashboard(new dashboard());
             view.setVisible(false);
@@ -103,6 +112,8 @@ public class cLogin {
         public void actionPerformed(ActionEvent e) {
 //            akunUser();
             login();
+            System.out.println("wwww"+dataAkun.getId());
+            
         }
     }
 

@@ -12,11 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.dataAkun;
-import model.pengajuan;
 import model.ukm;
+import view.aUkm;
 import view.a_inves;
 import view.a_pinjamanPB1;
-import view.a_pinjamanPB2;
 import view.awal;
 import view.dashboardAdmin;
 
@@ -24,11 +23,11 @@ import view.dashboardAdmin;
  *
  * @author user
  */
-public class cPinjamPBrinci {
-    a_pinjamanPB2 view;
-    pengajuan ajuan = new pengajuan();
+public class cAUkm {
+    aUkm view;
+    ukm ukm = new ukm();
     
-    public cPinjamPBrinci (a_pinjamanPB2 view) {
+    public cAUkm (aUkm view) {
         this.view = view;
         this.view.setVisible(true);
         this.view.klikLogout(new tmblLogout());
@@ -43,14 +42,10 @@ public class cPinjamPBrinci {
     public void tampilData(){
         System.out.println("");
         view.getUsaha().setText(ukm.getNamaUsaha());
-        view.getAlasan().setText(pengajuan.getAlasanPeminjaman());
         view.getThn().setText(ukm.getThnBerdiri());
-        view.getCicil().setSelectedItem(pengajuan.getWktCicilan());
-        view.getJaminan().setText(pengajuan.getJaminan());
-        view.getJmlh().setText(pengajuan.getJmlhPinjam());
-        view.getLunas().setSelectedItem(pengajuan.getWktPelunasan());
-        view.getStatus().setSelectedItem(pengajuan.getStatus());
-        System.out.println("test"+pengajuan.getAlasanPeminjaman());
+        view.getProposal().setText(ukm.getProposal());
+        view.getJnsUsaha().setText(ukm.getJnsUsaha());
+        view.getStatus().setSelectedItem(ukm.getStatus());
     }
     
     private class tmblTampil implements ActionListener {
@@ -60,7 +55,7 @@ public class cPinjamPBrinci {
             System.out.println("dw");
             try {
                 System.out.println("dsw");
-                ajuan.tampilBukti(dataAkun.getId());
+                ukm.tampilProposalAd(dataAkun.getId());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(cLapTampil.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -98,11 +93,9 @@ public class cPinjamPBrinci {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            ajuan.verif((String) view.getStatus().getSelectedItem(), pengajuan.getId());
-            System.out.println(pengajuan.getId());
-            System.out.println((String) view.getStatus().getSelectedItem());
+            ukm.verif((String) view.getStatus().getSelectedItem());
             JOptionPane.showMessageDialog(null,"Berhasil verifikasi");
-            controller.cPinjamPB a_pinjamanPB1 = new controller.cPinjamPB(new a_pinjamanPB1());
+            controller.cAUkm ukm = new controller.cAUkm(new aUkm());
             view.setVisible(false);
         }
     }
@@ -115,5 +108,4 @@ public class cPinjamPBrinci {
             view.setVisible(false);
         }
     }
-    
 }

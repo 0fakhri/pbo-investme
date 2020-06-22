@@ -55,9 +55,6 @@ public class a_inves extends javax.swing.JFrame {
         btnDashboardAdmin = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
-        btnLapor = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnPD = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -144,16 +141,6 @@ public class a_inves extends javax.swing.JFrame {
             }
         });
 
-        btnLapor.setBackground(new java.awt.Color(119, 173, 209));
-        btnLapor.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnLapor.setForeground(new java.awt.Color(255, 255, 255));
-        btnLapor.setText("Laporan                >");
-        btnLapor.setToolTipText("");
-        btnLapor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnLapor.setContentAreaFilled(false);
-        btnLapor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLapor.setOpaque(true);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -171,7 +158,6 @@ public class a_inves extends javax.swing.JFrame {
                     .addComponent(btnDashboardAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnLapor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPinjam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                             .addComponent(btnInves, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -188,40 +174,12 @@ public class a_inves extends javax.swing.JFrame {
                 .addComponent(btnPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnInves, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, -1));
-
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Pengajuan Baru");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 44, 240, 33));
-
-        btnPD.setBackground(new java.awt.Color(153, 153, 255));
-        btnPD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnPD.setForeground(new java.awt.Color(255, 255, 255));
-        btnPD.setText("Dana ");
-        btnPD.setContentAreaFilled(false);
-        btnPD.setOpaque(true);
-        btnPD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPDActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 44, 240, 33));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -254,7 +212,7 @@ public class a_inves extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 95, -1, 91));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 95, 600, 110));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
@@ -283,14 +241,6 @@ public class a_inves extends javax.swing.JFrame {
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfilActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btnPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,12 +280,9 @@ public class a_inves extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDashboardAdmin;
     private javax.swing.JButton btnInves;
-    private javax.swing.JButton btnLapor;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnPD;
     private javax.swing.JButton btnPinjam;
     private javax.swing.JButton btnProfil;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

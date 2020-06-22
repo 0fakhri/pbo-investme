@@ -6,18 +6,20 @@
 package view;
 
 import java.awt.event.ActionListener;
-import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import model.ukm;
 
 /**
  *
  * @author user
  */
-public class dashboardAdmin extends javax.swing.JFrame {
-    private String idCek;
-    
-    public dashboardAdmin() {
+public class profilAdmin extends javax.swing.JFrame {
+
+    /**
+     * Creates new form profilAdmin
+     */
+    public profilAdmin() {
         initComponents();
     }
     
@@ -37,9 +39,11 @@ public class dashboardAdmin extends javax.swing.JFrame {
         btnProfil.addActionListener(action);
     }
     
-    public void klikCek(ActionListener action){
-        cek.addActionListener(action);
+    public void klikHome(ActionListener action){
+        home.addActionListener(action);
     }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,61 +53,114 @@ public class dashboardAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        sumbang = new javax.swing.JTextField();
-        pengaju = new javax.swing.JTextField();
-        jukm = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        jnsKel = new javax.swing.JComboBox<>();
+        username = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btnSimpan = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        noTelp = new javax.swing.JTextField();
+        passw = new javax.swing.JPasswordField();
+        jLabel15 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnInves = new javax.swing.JButton();
-        btnDashboard = new javax.swing.JButton();
+        home = new javax.swing.JButton();
         btnPinjam = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ukmTable = new javax.swing.JTable();
-        cek = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel4.setText("Jumlah Penyumbang");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel3.setText("Jumlah Pengajuan");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Profil");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel1.setText("Jumlah UKM");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
-
-        sumbang.setEditable(false);
-        sumbang.addActionListener(new java.awt.event.ActionListener() {
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sumbangActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        getContentPane().add(sumbang, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 170, 30));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 250, 30));
 
-        pengaju.setEditable(false);
-        pengaju.addActionListener(new java.awt.event.ActionListener() {
+        jnsKel.setEditable(true);
+        jnsKel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+        jnsKel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pengajuActionPerformed(evt);
+                jnsKelActionPerformed(evt);
             }
         });
-        getContentPane().add(pengaju, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 170, 30));
+        jPanel1.add(jnsKel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 90, 30));
 
-        jukm.setEditable(false);
-        jukm.addActionListener(new java.awt.event.ActionListener() {
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jukmActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(jukm, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 170, 30));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 250, 30));
+
+        nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 250, 30));
+
+        jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel4.setText("Email");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel5.setText("Username");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel9.setText("Jenis Kelamin");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel11.setText("Nama Pengguna");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+
+        btnSimpan.setBackground(new java.awt.Color(102, 102, 255));
+        btnSimpan.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan Perubahan");
+        btnSimpan.setContentAreaFilled(false);
+        btnSimpan.setOpaque(true);
+        jPanel1.add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 250, 30));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel14.setText("No Telp");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+
+        noTelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noTelpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(noTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 140, 30));
+
+        passw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwActionPerformed(evt);
+            }
+        });
+        jPanel1.add(passw, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 250, 30));
+
+        jLabel15.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel15.setText("Kata Sandi");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(119, 173, 209));
 
@@ -122,18 +179,18 @@ public class dashboardAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnDashboard.setBackground(new java.awt.Color(133, 193, 233));
-        btnDashboard.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
-        btnDashboard.setText("Dasboard   >");
-        btnDashboard.setToolTipText("");
-        btnDashboard.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnDashboard.setContentAreaFilled(false);
-        btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDashboard.setOpaque(true);
-        btnDashboard.addActionListener(new java.awt.event.ActionListener() {
+        home.setBackground(new java.awt.Color(133, 193, 233));
+        home.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
+        home.setForeground(new java.awt.Color(255, 255, 255));
+        home.setText("Dasboard   >");
+        home.setToolTipText("");
+        home.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
+        home.setContentAreaFilled(false);
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.setOpaque(true);
+        home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDashboardActionPerformed(evt);
+                homeActionPerformed(evt);
             }
         });
 
@@ -202,7 +259,7 @@ public class dashboardAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnInves, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(btnDashboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                            .addComponent(home, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -212,7 +269,7 @@ public class dashboardAdmin extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(btnProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98)
-                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -222,56 +279,59 @@ public class dashboardAdmin extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, -1));
 
-        ukmTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        ukmTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ukmTableMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(ukmTable);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 590));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, 200));
-
-        cek.setBackground(new java.awt.Color(102, 102, 255));
-        cek.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cek.setForeground(new java.awt.Color(255, 255, 255));
-        cek.setText("Cek");
-        cek.setContentAreaFilled(false);
-        cek.setOpaque(true);
-        cek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cekActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cek, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 60, 33));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 830, 540));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
+
+    private void jnsKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnsKelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jnsKelActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
+
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaActionPerformed
+
+    private void noTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTelpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noTelpActionPerformed
+
+    private void passwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwActionPerformed
+
     private void btnInvesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInvesActionPerformed
 
-    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDashboardActionPerformed
+    }//GEN-LAST:event_homeActionPerformed
 
     private void btnPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPinjamActionPerformed
         // TODO add your handling code here:
@@ -284,28 +344,6 @@ public class dashboardAdmin extends javax.swing.JFrame {
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfilActionPerformed
-
-    private void ukmTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ukmTableMouseClicked
-        int row = ukmTable.rowAtPoint(evt.getPoint());
-        setIdCek(ukmTable.getValueAt(row, 0).toString());
-        System.out.println(getIdCek());
-    }//GEN-LAST:event_ukmTableMouseClicked
-
-    private void cekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekActionPerformed
-
-    }//GEN-LAST:event_cekActionPerformed
-
-    private void jukmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jukmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jukmActionPerformed
-
-    private void pengajuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pengajuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pengajuActionPerformed
-
-    private void sumbangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumbangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sumbangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,67 +362,72 @@ public class dashboardAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profilAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profilAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profilAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profilAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashboardAdmin().setVisible(true);
+                new profilAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnInves;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPinjam;
     private javax.swing.JButton btnProfil;
-    private javax.swing.JButton cek;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JTextField email;
+    private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jukm;
-    private javax.swing.JTextField pengaju;
-    private javax.swing.JTextField sumbang;
-    private javax.swing.JTable ukmTable;
+    private javax.swing.JComboBox<String> jnsKel;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField noTelp;
+    private javax.swing.JPasswordField passw;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 
-    public JTable getUkm() {
-        return ukmTable;
+    public JComboBox<String> getJnsKel() {
+        return jnsKel;
     }
 
-    public String getIdCek() {
-        return idCek;
+    public JTextField getNama() {
+        return nama;
     }
 
-    public void setIdCek(String idCek) {
-        this.idCek = idCek;
-        ukm.setIdCek(idCek);
+    public JTextField getNoTelp() {
+        return noTelp;
     }
 
-    public JTextField getJukm() {
-        return jukm;
+    public JPasswordField getPassw() {
+        return passw;
     }
 
-    public JTextField getPengaju() {
-        return pengaju;
+    public JTextField getUsername() {
+        return username;
     }
 
-    public JTextField getSumbang() {
-        return sumbang;
+    public JTextField getEmail() {
+        return email;
     }
-    
+
     
 }

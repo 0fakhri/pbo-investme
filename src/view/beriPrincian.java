@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
 
 /**
  *
@@ -40,6 +41,14 @@ public class beriPrincian extends javax.swing.JFrame {
         btnBantu.addActionListener(action);
     }
     
+    public void klikLaporan(ActionListener action){
+        btnLapor.addActionListener(action);
+    }
+    
+    public void klikTampil(ActionListener action){
+        dw.addActionListener(action);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,19 +72,18 @@ public class beriPrincian extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        dw = new javax.swing.JButton();
         btnBantu = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        thn = new javax.swing.JTextField();
+        jmlh = new javax.swing.JTextField();
+        wktu = new javax.swing.JTextField();
+        jaminan = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        alasan = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jmlhBantuan = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -230,6 +238,18 @@ public class beriPrincian extends javax.swing.JFrame {
 
         jLabel7.setText("Jaminan :");
 
+        dw.setBackground(new java.awt.Color(102, 102, 255));
+        dw.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dw.setForeground(new java.awt.Color(255, 255, 255));
+        dw.setText("Dwonload laporan keuangan");
+        dw.setContentAreaFilled(false);
+        dw.setOpaque(true);
+        dw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dwActionPerformed(evt);
+            }
+        });
+
         btnBantu.setBackground(new java.awt.Color(102, 102, 255));
         btnBantu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnBantu.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,57 +262,50 @@ public class beriPrincian extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("PT. Ababil");
+        nama.setEditable(false);
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("2008");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        thn.setEditable(false);
+        thn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                thnActionPerformed(evt);
             }
         });
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("Rp. 10.000.000,-");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jmlh.setEditable(false);
+        jmlh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jmlhActionPerformed(evt);
             }
         });
 
-        jTextField4.setEditable(false);
-        jTextField4.setText("12 Mei 2023");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        wktu.setEditable(false);
+        wktu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                wktuActionPerformed(evt);
             }
         });
 
-        jTextField5.setEditable(false);
-        jTextField5.setText("Sepeda Motor Vario");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jaminan.setEditable(false);
+        jaminan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jaminanActionPerformed(evt);
             }
         });
 
         jLabel9.setText("Alasan meminjam :");
 
-        jTextField6.setEditable(false);
-        jTextField6.setText("Butuh uang untuk merombak warung");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        alasan.setEditable(false);
+        alasan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                alasanActionPerformed(evt);
             }
         });
 
         jLabel10.setText("Masukkan nominal investasi Anda :");
 
-        jTextField7.setText("Rp. 50.000,-");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jmlhBantuan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jmlhBantuanActionPerformed(evt);
             }
         });
 
@@ -309,34 +322,38 @@ public class beriPrincian extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(nama))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(55, 55, 55)
-                        .addComponent(jTextField5))
+                        .addComponent(jaminan))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(31, 31, 31)
-                        .addComponent(jTextField2))
+                        .addComponent(thn))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(15, 15, 15)
-                        .addComponent(jTextField3))
+                        .addComponent(jmlh))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(11, 11, 11)
-                        .addComponent(jTextField4))
+                        .addComponent(wktu))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(12, 12, 12)
-                        .addComponent(jTextField6))
+                        .addComponent(alasan))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jmlhBantuan, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
-                        .addGap(6, 6, 6)))
+                        .addGap(6, 6, 6))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(dw)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -345,31 +362,33 @@ public class beriPrincian extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(thn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jmlh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wktu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jaminan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(alasan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(dw)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jmlhBantuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBantu)
@@ -377,20 +396,6 @@ public class beriPrincian extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 122, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        jLabel8.setText("Total Uang");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 89, -1, -1));
-
-        jTextField8.setEditable(false);
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setText("Rp. 175.000.-");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 79, 150, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -3, 830, 540));
@@ -403,33 +408,29 @@ public class beriPrincian extends javax.swing.JFrame {
                 // TODO add your handling code here:
     }//GEN-LAST:event_btnBantuActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void thnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_thnActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jmlhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jmlhActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void wktuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wktuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_wktuActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jaminanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaminanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jaminanActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void alasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alasanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_alasanActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jmlhBantuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlhBantuanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jmlhBantuanActionPerformed
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
         // TODO add your handling code here:
@@ -450,6 +451,10 @@ public class beriPrincian extends javax.swing.JFrame {
     private void btnBeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBeriActionPerformed
+
+    private void dwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dwActionPerformed
 
     /**
      * @param args the command line arguments
@@ -487,6 +492,7 @@ public class beriPrincian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField alasan;
     private javax.swing.JButton btnAjukan;
     private javax.swing.JButton btnBantu;
     private javax.swing.JButton btnBeri;
@@ -494,6 +500,7 @@ public class beriPrincian extends javax.swing.JFrame {
     private javax.swing.JButton btnLapor;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfil;
+    private javax.swing.JButton dw;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -503,17 +510,44 @@ public class beriPrincian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jaminan;
+    private javax.swing.JTextField jmlh;
+    private javax.swing.JTextField jmlhBantuan;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField thn;
+    private javax.swing.JTextField wktu;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getAlasan() {
+        return alasan;
+    }
+
+    public JTextField getJaminan() {
+        return jaminan;
+    }
+
+    public JTextField getJmlh() {
+        return jmlh;
+    }
+
+    public JTextField getJmlhBantuan() {
+        return jmlhBantuan;
+    }
+
+    public JTextField getNama() {
+        return nama;
+    }
+
+    public JTextField getThn() {
+        return thn;
+    }
+
+    public JTextField getWktu() {
+        return wktu;
+    }
+    
+    
 }

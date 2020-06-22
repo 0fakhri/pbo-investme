@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.bantuan;
 import model.dataAkun;
 import model.lapora;
 import model.pengajuan;
@@ -19,45 +18,34 @@ import view.ajukan;
 import view.ajukanlama;
 import view.awal;
 import view.beriP;
-import view.beriPrincian;
 import view.dashboard;
 import view.lapTampil;
-import view.laporan;
 import view.profil;
 
 /**
  *
  * @author user
  */
-public class cBeriRinci {
-    beriPrincian view;
-    bantuan bantu = new bantuan();
-    ukm uk = new ukm();
+public class cLapTampil {
+    lapTampil view;
+    lapora lapor = new lapora();
     
-    public cBeriRinci(beriPrincian view){
+    public cLapTampil(lapTampil view){
         this.view = view;
         this.view.setVisible(true);
-        this.view.klikLogout(new tmblLogout());
         this.view.klikDashboard(new tmblDashboard());
+        this.view.klikLogout(new tmblLogout());
         this.view.klikProfil(new tmblProfil());
         this.view.klikAjukan(new tmblAjukan());
-        this.view.klikBantu(new tmblBantu());
+        this.view.klikBeri(new tmblBeri());
         this.view.klikTampil(new tmblTampil());
-        this.view.klikLaporan(new tmblLaporan());
-        tampilData();
+        view.getNama().setText("Laporan pertanggung jawaban usaha "+ukm.getNamaUsaha());
+//        ukmModel.ukmDB(dataAkun.getId());
+//        ajuanModel.pengajuanDB(dataAkun.getId());
+        System.out.println(dataAkun.getId());
+        System.out.println(pengajuan.getPembuat());
     }
     
-    public void tampilData(){
-        System.out.println("");
-        view.getNama().setText(ukm.getNamaUsaha());
-        view.getAlasan().setText(pengajuan.getAlasanPeminjaman());
-        view.getThn().setText(ukm.getThnBerdiri());
-        view.getJaminan().setText(pengajuan.getJaminan());
-        view.getJmlh().setText(pengajuan.getJmlhPinjam());
-        view.getWktu().setText(pengajuan.getWktPelunasan());
-        System.out.println("test"+pengajuan.getAlasanPeminjaman());
-    }
-
     private class tmblTampil implements ActionListener {
 
         @Override
@@ -65,41 +53,13 @@ public class cBeriRinci {
             System.out.println("dw");
             try {
                 System.out.println("dsw");
-                uk.tampilProposal(dataAkun.getId());
+                lapor.tampilLap(dataAkun.getId());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(cLapTampil.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
     
-        private class tmblLaporan implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (lapora.getIdPengajuan() == null) {
-//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
-                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
-                view.setVisible(false);
-            } else {
-                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
-                view.setVisible(false);
-            }
-            
-        }
-    }
-    
-    private class tmblBantu implements ActionListener {
-
-        public tmblBantu() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            controller.cBeri bari = new controller.cBeri(new beriP());
-            bantu.addBantuan(view.getJmlhBantuan().getText());
-            view.setVisible(false);
-        }
-    }
     private class tmblDashboard implements ActionListener {
 
         @Override
@@ -116,19 +76,30 @@ public class cBeriRinci {
             controller.cProfil profil = new controller.cProfil(new profil());
             view.setVisible(false);
         }
-    }
+    }        
     
     private class tmblAjukan implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if (pengajuan.getPembuat()==null) {
+                controller.cAjukan ajukan = new controller.cAjukan(new ajukan());
+                view.setVisible(false);
+//                System.out.println("masok pak");
+            } else {
+                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
+                view.setVisible(false);
+//                System.out.println("masok else ");
+            }
+        }
+    }
+    
+    private class tmblBeri implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (pengajuan.getPembuat().equals(dataAkun.getId())) {
-                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
-                view.setVisible(false);
-            } else {
-                controller.cAjukan ajukan = new controller.cAjukan(new ajukan());
-                view.setVisible(false);
-            }
+            controller.cBeri beri = new controller.cBeri(new beriP());
+            view.setVisible(false);
         }
     }
 
@@ -140,6 +111,4 @@ public class cBeriRinci {
             view.setVisible(false);
         }
     }
-    
 }
-

@@ -6,21 +6,33 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Lenovo
  */
 public class ajukanbaru extends javax.swing.JFrame {
-
+    String filename;
     /**
      * Creates new form ajukanbaru
      */
     public ajukanbaru() {
         initComponents();
+    }
+    
+    public void klikBeri(ActionListener action){
+        btnBeri.addActionListener(action);
+    }
+    
+    public void klikLaporan(ActionListener action){
+        btnLapor.addActionListener(action);
     }
     
     public void klikLogout(ActionListener action){
@@ -37,6 +49,10 @@ public class ajukanbaru extends javax.swing.JFrame {
     
     public void klikKirim(ActionListener action){
         btnKirim.addActionListener(action);
+    }
+    
+    public String getFilename() {
+        return filename;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +75,7 @@ public class ajukanbaru extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnKirim = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        lbl = new javax.swing.JTextField();
         jaminan = new javax.swing.JTextField();
         cicilan = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
@@ -67,6 +84,8 @@ public class ajukanbaru extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnLapor = new javax.swing.JButton();
+        btnBeri = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +118,7 @@ public class ajukanbaru extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel7.setText("Alasan Peminjaman");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 351, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
 
         alasan.setText("Butuh untuk membongkar warung");
         alasan.addActionListener(new java.awt.event.ActionListener() {
@@ -107,15 +126,20 @@ public class ajukanbaru extends javax.swing.JFrame {
                 alasanActionPerformed(evt);
             }
         });
-        getContentPane().add(alasan, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 372, 307, 30));
+        getContentPane().add(alasan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 307, 30));
 
         uploadBukti.setBackground(new java.awt.Color(102, 102, 255));
         uploadBukti.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
         uploadBukti.setForeground(new java.awt.Color(255, 255, 255));
-        uploadBukti.setText("Upload bukti kepemilikan");
+        uploadBukti.setText("Upload");
         uploadBukti.setContentAreaFilled(false);
         uploadBukti.setOpaque(true);
-        getContentPane().add(uploadBukti, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 311, -1, 30));
+        uploadBukti.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                uploadBuktiMouseClicked(evt);
+            }
+        });
+        getContentPane().add(uploadBukti, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 370, 90, 30));
 
         waktu.setEditable(true);
         waktu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
@@ -131,11 +155,18 @@ public class ajukanbaru extends javax.swing.JFrame {
         btnKirim.setText("Kirim Pengajuan Pinjaman");
         btnKirim.setContentAreaFilled(false);
         btnKirim.setOpaque(true);
-        getContentPane().add(btnKirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 420, 307, 30));
+        getContentPane().add(btnKirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 307, 30));
 
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel9.setText("Jaminan");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 289, -1, -1));
+        jLabel9.setText("Upload bukti kepemilikan");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
+
+        lbl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblActionPerformed(evt);
+            }
+        });
+        getContentPane().add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 220, 30));
 
         jaminan.setText("Sepeda Motor");
         jaminan.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +174,7 @@ public class ajukanbaru extends javax.swing.JFrame {
                 jaminanActionPerformed(evt);
             }
         });
-        getContentPane().add(jaminan, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 312, 106, 30));
+        getContentPane().add(jaminan, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 312, 310, 30));
 
         cicilan.setEditable(true);
         cicilan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "per 1 Minggu", "per 2 Minggu", "per 3 Minggu", "per 1 Bulan", "per 2 Bulan", "per 3 Bulan" }));
@@ -223,6 +254,16 @@ public class ajukanbaru extends javax.swing.JFrame {
         btnLapor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLapor.setOpaque(true);
 
+        btnBeri.setBackground(new java.awt.Color(119, 173, 209));
+        btnBeri.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
+        btnBeri.setForeground(new java.awt.Color(255, 255, 255));
+        btnBeri.setText("Beri Pinjaman       >");
+        btnBeri.setToolTipText("");
+        btnBeri.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
+        btnBeri.setContentAreaFilled(false);
+        btnBeri.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBeri.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -232,6 +273,7 @@ public class ajukanbaru extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(btnAjukan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +283,7 @@ public class ajukanbaru extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
-            .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnBeri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,14 +294,20 @@ public class ajukanbaru extends javax.swing.JFrame {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAjukan, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBeri, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel10.setText("Jaminan");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 289, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
@@ -296,6 +344,29 @@ public class ajukanbaru extends javax.swing.JFrame {
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfilActionPerformed
+
+    private void uploadBuktiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadBuktiMouseClicked
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("pdf", "pdf");
+        chooser.setDialogTitle("Pilih file laporan pertanggung jawaban dana (PDF)");
+        chooser.setFileFilter(filter);
+        chooser.showOpenDialog(null);
+        File select = chooser.getSelectedFile();
+        filename = select.getAbsolutePath();
+        try{
+//            System.out.println(select.getAbsolutePath());
+//            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lbl_img.getWidth(),lbl_img.getHeight(),Image.SCALE_SMOOTH));
+            lbl.setText(filename);
+            System.out.println(filename);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_uploadBuktiMouseClicked
+
+    private void lblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,6 +406,7 @@ public class ajukanbaru extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alasan;
     private javax.swing.JButton btnAjukan;
+    private javax.swing.JButton btnBeri;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnKirim;
     private javax.swing.JButton btnLapor;
@@ -342,6 +414,7 @@ public class ajukanbaru extends javax.swing.JFrame {
     private javax.swing.JButton btnProfil;
     private javax.swing.JComboBox<String> cicilan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -352,6 +425,7 @@ public class ajukanbaru extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jaminan;
     private javax.swing.JTextField jmlh;
+    private javax.swing.JTextField lbl;
     private javax.swing.JButton uploadBukti;
     private javax.swing.JComboBox<String> waktu;
     // End of variables declaration//GEN-END:variables

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -12,22 +7,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.bantuan;
 import model.dbconnect;
+import model.pengajuan;
 import model.ukm;
+import view.aUkm;
 import view.a_inves;
 import view.a_pinjamanPB1;
 import view.awal;
 import view.dashboardAdmin;
+import view.profilAdmin;
 
-/**
- *
- * @author user
- */
+
 public class cDashboardAdmin {
     dashboardAdmin view;
     private final DefaultTableModel model;
     dbconnect koneksi = new dbconnect();    
-    ukm ukm = new ukm();
+    ukm ukmModel = new ukm();
+    pengajuan p = new pengajuan();
+    bantuan b = new bantuan();
     
     public cDashboardAdmin (dashboardAdmin view) {
         this.view = view;
@@ -35,9 +33,12 @@ public class cDashboardAdmin {
         this.view.klikLogout(new tmblLogout());
         this.view.klikPinjam(new tmblPinjam());
         this.view.klikInves(new tmblInves());
-//        this.view.klikCek(new tmblCek());
+        this.view.klikCek(new tmblCek());
+        this.view.klikProfil(new tmblProf());
 //        this.view.klikProfil(new tmblProfil());
-
+        ukmModel.jmlh();
+        p.jmlh();
+        b.jmlh();
         model = new DefaultTableModel ();
         view.getUkm().setModel(model);
         model.addColumn("ID");
@@ -45,7 +46,9 @@ public class cDashboardAdmin {
         model.addColumn("Jenis Usaha");
         model.addColumn("Status");
         getData();
-        
+        view.getPengaju().setText(pengajuan.getJmlh());
+        view.getSumbang().setText(bantuan.getJmlh());
+        view.getJukm().setText(ukm.getJmlh());
     }
     
     public void getData(){
@@ -78,8 +81,9 @@ public class cDashboardAdmin {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            ukm.ukmDB(view.getIdCek());
-//            kene controller view ne
+            ukmModel.ukmAd(ukm.getIdCek());
+            controller.cAUkm ukm = new controller.cAUkm(new aUkm());
+            view.setVisible(false);
         }
     }
     
@@ -97,6 +101,15 @@ public class cDashboardAdmin {
         @Override
         public void actionPerformed(ActionEvent e) {
             controller.cPinjamPB a_pinjamanPB1 = new controller.cPinjamPB(new a_pinjamanPB1());
+            view.setVisible(false);
+        }
+    }
+    
+    private class tmblProf implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.cProfilAdmin pro = new controller.cProfilAdmin(new profilAdmin());
             view.setVisible(false);
         }
     }

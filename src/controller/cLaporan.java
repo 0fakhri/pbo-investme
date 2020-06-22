@@ -11,14 +11,14 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.dataAkun;
 import model.lapora;
 import model.pengajuan;
-import view.ajukanbaru;
+import view.ajukan;
 import view.ajukanlama;
 import view.awal;
 import view.beriP;
 import view.dashboard;
-import view.lapTampil;
 import view.laporan;
 import view.profil;
 
@@ -26,19 +26,46 @@ import view.profil;
  *
  * @author user
  */
-public class cAjuBaru {
-    ajukanbaru view;
-    pengajuan pengajuanModel = new pengajuan();
+public class cLaporan {
+    laporan view;
+    lapora lapor = new lapora();
     
-    public cAjuBaru(ajukanbaru view){
+    public cLaporan(laporan view){
         this.view = view;
         this.view.setVisible(true);
-        this.view.klikLogout(new tmblLogout());
         this.view.klikDashboard(new tmblDashboard());
+        this.view.klikLogout(new tmblLogout());
         this.view.klikProfil(new tmblProfil());
-        this.view.klikKirim(new tmblKirim());
+        this.view.klikAjukan(new tmblAjukan());
         this.view.klikBeri(new tmblBeri());
-        this.view.klikLaporan(new tmblLaporan());
+        this.view.klikSimpan(new tmblSimpan());
+        
+//        ukmModel.ukmDB(dataAkun.getId());
+//        ajuanModel.pengajuanDB(dataAkun.getId());
+        System.out.println(dataAkun.getId());
+        System.out.println(pengajuan.getPembuat());
+    }
+    
+    private class tmblSimpan implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (view.getFilename() == null ) 
+            {
+                JOptionPane.showMessageDialog(null, "semua form harap diisi");
+            } else {
+                System.out.println("sukses");
+                try {
+                    if(lapor.upLaporan(view.getFilename(), dataAkun.getId())){
+                        JOptionPane.showMessageDialog(null, "gambar berhasil disimpan"); 
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(cLaporan.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            }
+        }
     }
     
     private class tmblDashboard implements ActionListener {
@@ -48,7 +75,6 @@ public class cAjuBaru {
             controller.cDashboard dashboard = new controller.cDashboard(new dashboard());
             view.setVisible(false);
         }
-
     }
     
     private class tmblProfil implements ActionListener {
@@ -58,23 +84,23 @@ public class cAjuBaru {
             controller.cProfil profil = new controller.cProfil(new profil());
             view.setVisible(false);
         }
-    }
-            
-    private class tmblLaporan implements ActionListener {
-
+    }        
+    
+    private class tmblAjukan implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (lapora.getIdPengajuan() == null) {
-//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
-                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
+
+            if (pengajuan.getPembuat()==null) {
+                controller.cAjukan ajukan = new controller.cAjukan(new ajukan());
                 view.setVisible(false);
+//                System.out.println("masok pak");
             } else {
-                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
+                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
                 view.setVisible(false);
+//                System.out.println("masok else ");
             }
-            
         }
-    }  
+    }
     
     private class tmblBeri implements ActionListener {
 
@@ -84,26 +110,7 @@ public class cAjuBaru {
             view.setVisible(false);
         }
     }
-    
-    private class tmblKirim implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (view.getAlasan().equals("") && view.getCicilan().equals("") && view.getJaminan().equals("") && view.getJmlh().equals("") && view.getWaktu().equals("") && view.getFilename() == null) {
-                JOptionPane.showMessageDialog(null, "Semua Form Wajib Diisi");
-            } else {
-                try {
-                    pengajuanModel.addPengajuan(view.getJmlh().getText(), (String) view.getWaktu().getSelectedItem(), (String) view.getCicilan().getSelectedItem(), view.getJaminan().getText(), view.getFilename(), view.getAlasan().getText());
-                    JOptionPane.showMessageDialog(null, "Pengajuan berhasil");
-                    controller.cAjuLama ajulama = new controller.cAjuLama(new ajukanlama());
-                    view.setVisible(false);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(cAjuBaru.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-    
     private class tmblLogout implements ActionListener {
 
         @Override

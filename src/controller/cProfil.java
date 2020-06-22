@@ -16,8 +16,11 @@ import view.dashboard;
 import view.profil;
 import view.profillanjutan;
 import java.sql.Statement;
+import model.lapora;
 import model.pengajuan;
 import view.ajukanlama;
+import view.lapTampil;
+import view.laporan;
 
 public class cProfil {
     profil view;
@@ -35,6 +38,7 @@ public class cProfil {
         this.view.klikBeri(new tmblBeri());
         this.view.klikLanjut(new tmblLanjutP());
         this.view.klikSimpan(new tmblSimpan());
+        this.view.klikLaporan(new tmblLaporan());
     }
     public void bio() {
 //        String id = dataAkun.getId();
@@ -63,6 +67,22 @@ public class cProfil {
             akunModel.ubahUser(view.getUsername().getText(), view.getPassw().getText(), view.getNama().getText(), view.getNoktp().getText(), view.getNoRek().getText(), view.getNamaRek().getText(), view.getEmail().getText(), (String) view.getBank().getSelectedItem(), (String) view.getJnsKel().getSelectedItem(), view.getNoTelp().getText(), view.getTanggal());
             controller.cProfil profil = new controller.cProfil(new profil());
             view.setVisible(false);
+        }
+    }
+    
+    private class tmblLaporan implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (lapora.getIdPengajuan() == null) {
+//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                view.setVisible(false);
+            } else {
+                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
+                view.setVisible(false);
+            }
+            
         }
     }
     
@@ -97,15 +117,17 @@ public class cProfil {
     }
     
     private class tmblAjukan implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (pengajuan.getPembuat().equals(dataAkun.getId())) {
-                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
-                view.setVisible(false);
-            } else {
+
+            if (pengajuan.getPembuat() == null) {
                 controller.cAjukan ajukan = new controller.cAjukan(new ajukan());
                 view.setVisible(false);
+//                System.out.println("masok pak");
+            } else {
+                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
+                view.setVisible(false);
+//                System.out.println("masok else ");
             }
         }
     }

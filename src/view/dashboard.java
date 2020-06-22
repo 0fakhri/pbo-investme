@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -37,7 +39,27 @@ public class dashboard extends javax.swing.JFrame {
     }
     
     public void klikLaporan(ActionListener action){
-        btnLapPenyumbang.addActionListener(action);
+        btnLapor.addActionListener(action);
+    }
+
+    public JTextField getJmlh() {
+        return jmlh;
+    }
+
+    public JTextField getNama() {
+        return nama;
+    }
+
+    public JTextField getNorek() {
+        return norek;
+    }
+
+    public JTextField getTerkumpul() {
+        return terkumpul;
+    }
+
+    public JTable getPengajuan() {
+        return pengajuan;
     }
     
     /**
@@ -56,29 +78,20 @@ public class dashboard extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
-        btnLapPeminjam = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        btnLapor = new javax.swing.JButton();
         btnBeri = new javax.swing.JButton();
-        btnLogout1 = new javax.swing.JButton();
-        btnProfil1 = new javax.swing.JButton();
-        btnHome1 = new javax.swing.JButton();
-        btnLapPenyumbang = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        pengajuan = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        norek = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        terkumpul = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jmlh = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,15 +168,30 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnLapPeminjam.setBackground(new java.awt.Color(119, 173, 209));
-        btnLapPeminjam.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnLapPeminjam.setForeground(new java.awt.Color(255, 255, 255));
-        btnLapPeminjam.setText("Laporan                >");
-        btnLapPeminjam.setToolTipText("");
-        btnLapPeminjam.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnLapPeminjam.setContentAreaFilled(false);
-        btnLapPeminjam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLapPeminjam.setOpaque(true);
+        btnLapor.setBackground(new java.awt.Color(119, 173, 209));
+        btnLapor.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
+        btnLapor.setForeground(new java.awt.Color(255, 255, 255));
+        btnLapor.setText("Laporan                >");
+        btnLapor.setToolTipText("");
+        btnLapor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
+        btnLapor.setContentAreaFilled(false);
+        btnLapor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLapor.setOpaque(true);
+
+        btnBeri.setBackground(new java.awt.Color(119, 173, 209));
+        btnBeri.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
+        btnBeri.setForeground(new java.awt.Color(255, 255, 255));
+        btnBeri.setText("Beri Pinjaman       >");
+        btnBeri.setToolTipText("");
+        btnBeri.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
+        btnBeri.setContentAreaFilled(false);
+        btnBeri.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBeri.setOpaque(true);
+        btnBeri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBeriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -184,7 +212,10 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(btnAjukan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnLapPeminjam, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBeri, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -196,186 +227,29 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAjukan, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnBeri, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLapPeminjam, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 540));
 
-        jPanel3.setBackground(new java.awt.Color(119, 173, 209));
-
-        btnBeri.setBackground(new java.awt.Color(119, 173, 209));
-        btnBeri.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnBeri.setForeground(new java.awt.Color(255, 255, 255));
-        btnBeri.setText("Beri Pinjaman       >");
-        btnBeri.setToolTipText("");
-        btnBeri.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnBeri.setContentAreaFilled(false);
-        btnBeri.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBeri.setOpaque(true);
-        btnBeri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBeriActionPerformed(evt);
-            }
-        });
-
-        btnLogout1.setBackground(new java.awt.Color(255, 51, 51));
-        btnLogout1.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnLogout1.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogout1.setText("Keluar");
-        btnLogout1.setToolTipText("");
-        btnLogout1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(251, 175, 100), 3, true));
-        btnLogout1.setBorderPainted(false);
-        btnLogout1.setContentAreaFilled(false);
-        btnLogout1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout1.setOpaque(true);
-        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout1ActionPerformed(evt);
-            }
-        });
-
-        btnProfil1.setBackground(new java.awt.Color(133, 193, 233));
-        btnProfil1.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnProfil1.setForeground(new java.awt.Color(255, 255, 255));
-        btnProfil1.setText("Profil");
-        btnProfil1.setToolTipText("");
-        btnProfil1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(251, 175, 100), 3, true));
-        btnProfil1.setBorderPainted(false);
-        btnProfil1.setContentAreaFilled(false);
-        btnProfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnProfil1.setOpaque(true);
-        btnProfil1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfil1ActionPerformed(evt);
-            }
-        });
-
-        btnHome1.setBackground(new java.awt.Color(133, 193, 233));
-        btnHome1.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnHome1.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome1.setText("Beranda                 >");
-        btnHome1.setToolTipText("");
-        btnHome1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnHome1.setContentAreaFilled(false);
-        btnHome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnHome1.setOpaque(true);
-        btnHome1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHome1ActionPerformed(evt);
-            }
-        });
-
-        btnLapPenyumbang.setBackground(new java.awt.Color(119, 173, 209));
-        btnLapPenyumbang.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
-        btnLapPenyumbang.setForeground(new java.awt.Color(255, 255, 255));
-        btnLapPenyumbang.setText("Laporan                >");
-        btnLapPenyumbang.setToolTipText("");
-        btnLapPenyumbang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
-        btnLapPenyumbang.setContentAreaFilled(false);
-        btnLapPenyumbang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLapPenyumbang.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btnProfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnLapPenyumbang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBeri, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(btnProfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBeri, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLapPenyumbang, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, -1));
-
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel3.setText("Top Up Saldo Anda");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel4.setText("Uang dapat dicarikan");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel5.setText("Keuntungan investasi");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Rp. 175.000.-");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 150, 30));
-
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Rp. 100.000.-");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, 30));
-
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Rp. 75.000.-");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 150, 30));
-
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cairkan");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 90, 30));
-
-        jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel7.setText("Total Uang");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel12.setText("Jumlah Pinjaman");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pengajuan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"PT. Aman", "Rp. 10.000.000,-", "Rp.50.000.-", "Sedang Berlangsung"},
                 {"UD. Sentosa", "Rp. 1.000.000,-", "Rp. 1.000.000.-", "Sudah Berakhir"},
@@ -400,40 +274,56 @@ public class dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setToolTipText("");
-        jScrollPane2.setViewportView(jTable2);
+        pengajuan.setToolTipText("");
+        jScrollPane2.setViewportView(pengajuan);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, 80));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, 130));
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel6.setText("Pengumpulan modal pinjaman sedang berlangsung");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel8.setText("Informasi Saldo Anda");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel9.setText("Nomer Transfer");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel10.setText("Atas Nama");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField4.setText("1780050034700");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 150, 30));
+        norek.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(norek, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 150, 30));
 
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField5.setText("Budi Santoso");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        nama.setEditable(false);
+        nama.setBackground(new java.awt.Color(204, 204, 204));
+        nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                namaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 150, 30));
+        jPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 150, 30));
+
+        terkumpul.setEditable(false);
+        terkumpul.setBackground(new java.awt.Color(204, 204, 204));
+        terkumpul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                terkumpulActionPerformed(evt);
+            }
+        });
+        jPanel1.add(terkumpul, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 150, 30));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel14.setText("Dana terkumpul (Rp)");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+
+        jmlh.setEditable(false);
+        jmlh.setBackground(new java.awt.Color(204, 204, 204));
+        jmlh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmlhActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jmlh, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 150, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 540));
@@ -469,37 +359,21 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_namaActionPerformed
 
     private void btnBeriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBeriActionPerformed
 
-    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
+    private void terkumpulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terkumpulActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogout1ActionPerformed
+    }//GEN-LAST:event_terkumpulActionPerformed
 
-    private void btnProfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfil1ActionPerformed
+    private void jmlhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnProfil1ActionPerformed
-
-    private void btnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHome1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHome1ActionPerformed
+    }//GEN-LAST:event_jmlhActionPerformed
 
     /**
      * @param args the command line arguments
@@ -540,33 +414,24 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnAjukan;
     private javax.swing.JButton btnBeri;
     private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnHome1;
-    private javax.swing.JButton btnLapPeminjam;
-    private javax.swing.JButton btnLapPenyumbang;
+    private javax.swing.JButton btnLapor;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnProfil;
-    private javax.swing.JButton btnProfil1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jmlh;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField norek;
+    private javax.swing.JTable pengajuan;
+    private javax.swing.JTextField terkumpul;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,27 +6,27 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JLabel;
 
 /**
  *
  * @author user
  */
-public class laporan extends javax.swing.JFrame {
-    String filename;
+public class lapTampil extends javax.swing.JFrame {
+
     /**
-     * Creates new form laporan
+     * Creates new form lapTampil
      */
-    public laporan() {
+    public lapTampil() {
         initComponents();
     }
     
-    public void klikSimpan(ActionListener action){
-        btnSimpan.addActionListener(action);
+    public void klikTampil(ActionListener action){
+        tampil.addActionListener(action);
+    }
+
+    public JLabel getNama() {
+        return nama;
     }
     
     public void klikLogout(ActionListener action){
@@ -48,10 +48,7 @@ public class laporan extends javax.swing.JFrame {
     public void klikProfil(ActionListener action){
         btnProfil.addActionListener(action);
     }
-
-    public String getFilename() {
-        return filename;
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +60,8 @@ public class laporan extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        nama1 = new javax.swing.JLabel();
+        nama = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnBeri = new javax.swing.JButton();
         btnAjukan = new javax.swing.JButton();
@@ -70,10 +69,7 @@ public class laporan extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
         btnLapor = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        btnSimpan = new javax.swing.JButton();
-        btnBrowse = new javax.swing.JButton();
-        lbl = new javax.swing.JTextField();
+        tampil = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,6 +81,16 @@ public class laporan extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Laporan");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        nama1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nama1.setForeground(new java.awt.Color(255, 255, 255));
+        nama1.setText("Laporan dari usaha yang anda bantu");
+        jPanel1.add(nama1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
+        nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nama.setForeground(new java.awt.Color(255, 255, 255));
+        nama.setText("Laporan pertanggung jawaban usaha \"nama usaha\"");
+        jPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(119, 173, 209));
 
@@ -223,37 +229,18 @@ public class laporan extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 540));
 
-        jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        jLabel11.setText("Upload laporan");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
-
-        btnSimpan.setBackground(new java.awt.Color(102, 102, 255));
-        btnSimpan.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
-        btnSimpan.setText("Simpan");
-        btnSimpan.setContentAreaFilled(false);
-        btnSimpan.setOpaque(true);
-        jPanel1.add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 100, 30));
-
-        btnBrowse.setBackground(new java.awt.Color(102, 102, 255));
-        btnBrowse.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        btnBrowse.setForeground(new java.awt.Color(255, 255, 255));
-        btnBrowse.setText("Browse");
-        btnBrowse.setContentAreaFilled(false);
-        btnBrowse.setOpaque(true);
-        btnBrowse.addMouseListener(new java.awt.event.MouseAdapter() {
+        tampil.setBackground(new java.awt.Color(102, 102, 255));
+        tampil.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
+        tampil.setForeground(new java.awt.Color(255, 255, 255));
+        tampil.setText("Download");
+        tampil.setContentAreaFilled(false);
+        tampil.setOpaque(true);
+        tampil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBrowseMouseClicked(evt);
+                tampilMouseClicked(evt);
             }
         });
-        jPanel1.add(btnBrowse, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 80, 30));
-
-        lbl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblActionPerformed(evt);
-            }
-        });
-        jPanel1.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 250, 30));
+        jPanel1.add(tampil, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 120, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 540));
@@ -297,28 +284,9 @@ public class laporan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLaporActionPerformed
 
-    private void btnBrowseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBrowseMouseClicked
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("pdf", "pdf");
-        chooser.setDialogTitle("Pilih file laporan pertanggung jawaban dana (PDF)");
-        chooser.setFileFilter(filter);
-        chooser.showOpenDialog(null);
-        File select = chooser.getSelectedFile();
-        filename = select.getAbsolutePath();
-        try{
-//            System.out.println(select.getAbsolutePath());
-//            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lbl_img.getWidth(),lbl_img.getHeight(),Image.SCALE_SMOOTH));
-            lbl.setText(filename);
-            System.out.println(filename);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_btnBrowseMouseClicked
+    private void tampilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tampilMouseClicked
 
-    private void lblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblActionPerformed
+    }//GEN-LAST:event_tampilMouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,20 +305,20 @@ public class laporan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(laporan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lapTampil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(laporan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lapTampil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(laporan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lapTampil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(laporan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(lapTampil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new laporan().setVisible(true);
+                new lapTampil().setVisible(true);
             }
         });
     }
@@ -358,20 +326,16 @@ public class laporan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAjukan;
     private javax.swing.JButton btnBeri;
-    private javax.swing.JButton btnBrowse;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLapor;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfil;
-    private javax.swing.JButton btnSimpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField lbl;
+    private javax.swing.JLabel nama;
+    private javax.swing.JLabel nama1;
+    private javax.swing.JButton tampil;
     // End of variables declaration//GEN-END:variables
-
-
-
 }

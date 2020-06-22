@@ -7,14 +7,20 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.dataAkun;
+import model.lapora;
 import model.pengajuan;
 import model.ukm;
 import view.ajukan;
 import view.ajukanlama;
 import view.awal;
 import view.dashboard;
+import view.lapTampil;
+import view.laporan;
 import view.profil;
 import view.profillanjutan;
 
@@ -32,23 +38,46 @@ public class cProfilLanjut {
         this.view = view;
         this.view.setVisible(true);
 //        ukmModel.ukmDB(dataAkun.getId());
-        vUkm();
         this.view.klikLogout(new tmblLogout());
         this.view.klikDashboard(new tmblDashboard());
         this.view.klikProfil(new tmblProfil());
         this.view.klikAjukan(new tmblAjukan());
         this.view.klikSimpan(new tmblSimpan());
+        this.view.klikLaporan(new tmblLaporan());
+        vUkm();
+//        if (ukm.getIdPengguna().equals(dataAkun.getId())) {
+//            vUkm();
+//        } else {
+//            System.out.println("idP"+dataAkun.getId());
+//        }
     }
 
     public void vUkm() {
 //        String id = ukm.getStatus();
 //        System.out.println(id);
-        System.out.println("nama"+ukm.getNamaUsaha());
-        view.getUsaha().setText(ukm.getNamaUsaha());
-        view.getJenisUsaha().setText(ukm.getJnsUsaha());
-        view.getThnDiri().setSelectedItem(ukm.getThnBerdiri());
-        view.getKeuangan().setText(ukm.getKeuangan());
-        view.getProposal().setText(ukm.getProposal());
+//        System.out.println("nama"+ukm.getNamaUsaha());
+        if (dataAkun.getId().equals(ukm.getIdPengguna())) {
+            view.getUsaha().setText(ukm.getNamaUsaha());
+            view.getJenisUsaha().setText(ukm.getJnsUsaha());
+            view.getThnDiri().setSelectedItem(ukm.getThnBerdiri());
+            view.getKeuangan().setText(ukm.getKeuangan());
+        }
+    }
+    
+        private class tmblLaporan implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (lapora.getIdPengajuan() == null) {
+//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                view.setVisible(false);
+            } else {
+                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
+                view.setVisible(false);
+            }
+            
+        }
     }
     
     private  class tmblSimpan implements ActionListener {
@@ -59,14 +88,22 @@ public class cProfilLanjut {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            if (view.getUsaha().equals("") && view.getThnDiri().equals("") && view.getJenisUsaha().equals("") && view.getKeuangan().equals("") && view.getProposal().equals("")) {
+            if (view.getUsaha().equals("") && view.getThnDiri().equals("") && view.getJenisUsaha().equals("") && view.getFilename().equals("") ) {
                 JOptionPane.showMessageDialog(null, "Semua Form Wajib Diisi");
             } else {
-                if (!"".equals(ukm.getId())) {
-                    ukmModel.ubahUkm(view.getUsaha().getText(), (String) view.getThnDiri().getSelectedItem(), view.getJenisUsaha().getText(), view.getKeuangan().getText(), view.getProposal().getText());
+                if (dataAkun.getId().equals(ukm.getIdPengguna())) {
+                    try {
+                        ukmModel.ubahUkm(view.getUsaha().getText(), (String) view.getThnDiri().getSelectedItem(), view.getJenisUsaha().getText(), view.getFilename());
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(cProfilLanjut.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     JOptionPane.showMessageDialog(null, "Data UKM berhasil diperbarui");
                 } else {
-                    ukmModel.addUkm(view.getUsaha().getText(), (String) view.getThnDiri().getSelectedItem(), view.getJenisUsaha().getText(), view.getKeuangan().getText(), view.getProposal().getText());
+                    try {
+                        ukmModel.addUkm(view.getUsaha().getText(), (String) view.getThnDiri().getSelectedItem(), view.getJenisUsaha().getText(),view.getFilename());
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(cProfilLanjut.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     JOptionPane.showMessageDialog(null, "Data UKM berhasil ditambah");
                     controller.cProfil profil = new controller.cProfil(new profil());
                     view.setVisible(false);
@@ -93,16 +130,18 @@ public class cProfilLanjut {
         }
     }
     
-        private class tmblAjukan implements ActionListener {
-
+    private class tmblAjukan implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (pengajuan.getPembuat().equals(dataAkun.getId())) {
-                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
-                view.setVisible(false);
-            } else {
+
+            if (pengajuan.getPembuat() == null) {
                 controller.cAjukan ajukan = new controller.cAjukan(new ajukan());
                 view.setVisible(false);
+//                System.out.println("masok pak");
+            } else {
+                controller.cAjuLama ajukanlama = new controller.cAjuLama(new ajukanlama());
+                view.setVisible(false);
+//                System.out.println("masok else ");
             }
         }
     }

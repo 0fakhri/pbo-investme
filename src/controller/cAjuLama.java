@@ -7,11 +7,15 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.bantuan;
+import model.lapora;
 import model.pengajuan;
 import view.ajukanlama;
 import view.awal;
 import view.beriP;
 import view.dashboard;
+import view.lapTampil;
+import view.laporan;
 import view.profil;
 
 /**
@@ -21,6 +25,7 @@ import view.profil;
 public class cAjuLama {
     ajukanlama view;
     pengajuan ajuan = new pengajuan();
+    bantuan bantu = new bantuan();
     
     public cAjuLama(ajukanlama view){
         this.view = view;
@@ -28,16 +33,21 @@ public class cAjuLama {
         this.view.klikLogout(new tmblLogout());
         this.view.klikDashboard(new tmblDashboard());
         this.view.klikProfil(new tmblProfil());
-        vPengajuan();
+        this.view.klikBeri(new tmblBeri());
+        this.view.klikLaporan(new tmblLaporan());
+        bantu.getBantuan(pengajuan.getId());
+        vTampilkan();
     }
     
-        public void vPengajuan(){
+        public void vTampilkan(){
         view.getAlasan().setText(pengajuan.getAlasanPeminjaman());
         view.getCicilan().setSelectedItem(pengajuan.getWktCicilan());
         view.getJaminan().setText(pengajuan.getJaminan());
         view.getJmlh().setText(pengajuan.getJmlhPinjam());
-        view.getBukti().setText(pengajuan.getBuktiKepemilikan());
+//        view.getBukti().setText(pengajuan.getBuktiKepemilikan());
         view.getWaktu().setSelectedItem(pengajuan.getWktPelunasan());
+        view.getStatus().setText(pengajuan.getStatus());
+        view.getTerkumpul().setText(String.valueOf(bantuan.getJmlhUang()));
     }
     
     private class tmblDashboard implements ActionListener {
@@ -48,6 +58,22 @@ public class cAjuLama {
             view.setVisible(false);
         }
     }
+    
+    private class tmblLaporan implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (lapora.getIdPengajuan() == null) {
+//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                view.setVisible(false);
+            } else {
+                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
+                view.setVisible(false);
+            }
+            
+        }
+    }  
     
     private class tmblProfil implements ActionListener {
 

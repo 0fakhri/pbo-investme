@@ -23,6 +23,15 @@ public class ajukanlama extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void klikBeri(ActionListener action){
+        btnBeri.addActionListener(action);
+    }
+    
+    
+    public void klikLaporan(ActionListener action){
+        btnLapor.addActionListener(action);
+    }
+    
     public void klikLogout(ActionListener action){
         btnLogout.addActionListener(action);
     }
@@ -50,6 +59,7 @@ public class ajukanlama extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
         btnLapor = new javax.swing.JButton();
+        btnBeri = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jmlh = new javax.swing.JTextField();
@@ -60,14 +70,11 @@ public class ajukanlama extends javax.swing.JFrame {
         cicilan = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jaminan = new javax.swing.JTextField();
-        bukti = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         alasan = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         status = new javax.swing.JButton();
-        berakhir = new javax.swing.JTextField();
         terkumpul = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
@@ -148,6 +155,16 @@ public class ajukanlama extends javax.swing.JFrame {
         btnLapor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLapor.setOpaque(true);
 
+        btnBeri.setBackground(new java.awt.Color(119, 173, 209));
+        btnBeri.setFont(new java.awt.Font("Microsoft YaHei", 1, 11)); // NOI18N
+        btnBeri.setForeground(new java.awt.Color(255, 255, 255));
+        btnBeri.setText("Beri Pinjaman       >");
+        btnBeri.setToolTipText("");
+        btnBeri.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 193, 233), 2, true));
+        btnBeri.setContentAreaFilled(false);
+        btnBeri.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBeri.setOpaque(true);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -166,7 +183,8 @@ public class ajukanlama extends javax.swing.JFrame {
                         .addComponent(btnAjukan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLapor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBeri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -178,9 +196,11 @@ public class ajukanlama extends javax.swing.JFrame {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAjukan, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(btnBeri, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLapor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -235,20 +255,7 @@ public class ajukanlama extends javax.swing.JFrame {
                 jaminanActionPerformed(evt);
             }
         });
-        getContentPane().add(jaminan, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 285, 106, 30));
-
-        bukti.setBackground(new java.awt.Color(102, 102, 255));
-        bukti.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
-        bukti.setForeground(new java.awt.Color(255, 255, 255));
-        bukti.setText("Bukti Kepemilikan.pdf");
-        bukti.setContentAreaFilled(false);
-        bukti.setOpaque(true);
-        bukti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buktiActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bukti, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 284, 189, 30));
+        getContentPane().add(jaminan, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 285, 310, 30));
 
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel7.setText("Alasan Peminjaman");
@@ -264,21 +271,16 @@ public class ajukanlama extends javax.swing.JFrame {
         getContentPane().add(alasan, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 345, 313, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel12.setText("Dana terkumpul");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 398, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        jLabel13.setText("Waktu berakhir");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 431, -1, -1));
+        jLabel12.setText("Dana terkumpul (Rp)");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel10.setText("Status");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 468, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
 
         status.setBackground(new java.awt.Color(255, 153, 0));
         status.setFont(new java.awt.Font("Roboto Light", 1, 13)); // NOI18N
         status.setForeground(new java.awt.Color(255, 255, 255));
-        status.setText("Sedang berlangsung");
         status.setContentAreaFilled(false);
         status.setOpaque(true);
         status.addActionListener(new java.awt.event.ActionListener() {
@@ -286,23 +288,14 @@ public class ajukanlama extends javax.swing.JFrame {
                 statusActionPerformed(evt);
             }
         });
-        getContentPane().add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 464, 189, 30));
+        getContentPane().add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 150, 30));
 
-        berakhir.setText("1 bulan 12 hari 10 jam");
-        berakhir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                berakhirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(berakhir, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 427, 189, 30));
-
-        terkumpul.setText("Rp. 5.000.000,-");
         terkumpul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 terkumpulActionPerformed(evt);
             }
         });
-        getContentPane().add(terkumpul, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 394, 189, 30));
+        getContentPane().add(terkumpul, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 150, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/bis.jpg"))); // NOI18N
@@ -336,10 +329,6 @@ public class ajukanlama extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jaminanActionPerformed
 
-    private void buktiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buktiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buktiActionPerformed
-
     private void alasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alasanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_alasanActionPerformed
@@ -347,10 +336,6 @@ public class ajukanlama extends javax.swing.JFrame {
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
-
-    private void berakhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_berakhirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_berakhirActionPerformed
 
     private void terkumpulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terkumpulActionPerformed
         // TODO add your handling code here:
@@ -393,19 +378,17 @@ public class ajukanlama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alasan;
-    private javax.swing.JTextField berakhir;
     private javax.swing.JButton btnAjukan;
+    private javax.swing.JButton btnBeri;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLapor;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfil;
-    private javax.swing.JButton bukti;
     private javax.swing.JComboBox<String> cicilan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -428,21 +411,13 @@ public class ajukanlama extends javax.swing.JFrame {
         this.alasan = alasan;
     }
 
-    public JTextField getBerakhir() {
-        return berakhir;
-    }
-
-    public void setBerakhir(JTextField berakhir) {
-        this.berakhir = berakhir;
-    }
-
-    public JButton getBukti() {
-        return bukti;
-    }
-
-    public void setBukti(JButton bukti) {
-        this.bukti = bukti;
-    }
+//    public JButton getBukti() {
+//        return bukti;
+//    }
+//
+//    public void setBukti(JButton bukti) {
+//        this.bukti = bukti;
+//    }
 
     public JComboBox<String> getCicilan() {
         return cicilan;

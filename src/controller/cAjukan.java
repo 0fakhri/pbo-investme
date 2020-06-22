@@ -8,12 +8,15 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.lapora;
 import model.ukm;
 import view.ajukan;
 import view.ajukanbaru;
 import view.awal;
 import view.beriP;
 import view.dashboard;
+import view.lapTampil;
+import view.laporan;
 import view.profil;
 
 /**
@@ -34,6 +37,7 @@ public class cAjukan {
         this.view.klikProfil(new tmblProfil());
         this.view.klikBeri(new tmblBeri());
         this.view.klikPengajuan(new tmblAjuBaru());
+        this.view.klikLaporan(new tmblLaporan());
     }
     
     private class tmblDashboard implements ActionListener {
@@ -44,6 +48,22 @@ public class cAjukan {
             view.setVisible(false);
         }
     }
+    
+    private class tmblLaporan implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (lapora.getIdPengajuan() == null) {
+//                controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                    controller.cLaporan laporan = new controller.cLaporan(new laporan());
+                view.setVisible(false);
+            } else {
+                controller.cLapTampil tampil = new controller.cLapTampil(new lapTampil());
+                view.setVisible(false);
+            }
+            
+        }
+    }  
     
     private class tmblProfil implements ActionListener {
 
@@ -67,9 +87,12 @@ public class cAjukan {
         
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (ukmModel.getStatus().equals("Verif")) {
+            if (ukm.getStatus().equals("Terverifikasi")) {
                 controller.cAjuBaru ajukanbaru = new controller.cAjuBaru(new ajukanbaru());
                 view.setVisible(false);
+            }
+            else if(ukm.getStatus().equals("Ditolak")){
+                JOptionPane.showMessageDialog(null, "Data Profil Ukm Anda Ditolak");
             }
             else{
                 JOptionPane.showMessageDialog(null, "Data Profil Ukm Anda belum terverifikasi");

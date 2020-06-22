@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import model.dbconnect;
 import view.a_inves;
@@ -15,6 +14,7 @@ import view.a_pinjamanPB1;
 import view.a_pinjamanPB2;
 import view.awal;
 import view.dashboardAdmin;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -34,7 +34,6 @@ public class cPinjamPB {
         this.view.klikPinjam(new tmblPinjam());
         this.view.klikInves(new tmblInves());
         this.view.klikHome(new tmblHome());
-        this.view.klikPD(new tmblRinci());
         this.view.klikCek(new tmblCek());
         
         model = new DefaultTableModel ();
@@ -60,12 +59,19 @@ public class cPinjamPB {
             while(rs.next ()){
                 ukm.setThnBerdiri(rs.getString("tahunBerdiri"));
                 ukm.setNamaUsaha(rs.getString("namaUsaha"));
+                
                 Object[ ] obj = new Object[5];
                 obj[0] = rs.getString("idPengajuan");
                 obj[1] = rs.getString("namaUsaha");
                 obj[2] = rs.getString("jenisUsaha");
                 obj[3] = rs.getString("jumlahPinjaman");
                 obj[4] = rs.getString("statusVerif");
+                pengajuan.setId(rs.getString("idPengajuan"));
+                pengajuan.setJmlhPinjam(rs.getString("jumlahPinjaman"));
+                pengajuan.setAlasanPeminjaman(rs.getString("alasanPeminjaman"));
+                pengajuan.setJaminan(rs.getString("jaminan"));
+                pengajuan.setWktCicilan(rs.getString("waktucicilan"));
+                pengajuan.setWktPelunasan(rs.getString("waktuPelunasan"));
 
                 model.addRow(obj);
             }
@@ -78,8 +84,7 @@ public class cPinjamPB {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            p.pengajuanDB(view.getIda());
-            p.setIdSementara(view.getIda());
+            p.pengajuanAd(pengajuan.getIdCek());
             System.out.println(view.getIda());
             controller.cPinjamPBrinci rinci = new controller.cPinjamPBrinci(new a_pinjamanPB2());
             view.setVisible(false);

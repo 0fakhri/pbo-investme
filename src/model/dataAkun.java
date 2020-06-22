@@ -26,7 +26,7 @@ public class dataAkun {
             sql = "SELECT * FROM datapengguna WHERE username='"+username+"' AND password='"+password+"'";
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {                
-                System.out.println(rs.getString(3)+" "+rs.getString(4));
+//                System.out.println(rs.getString(3)+" "+rs.getString(4));
                 dataAkun.setId(String.valueOf(rs.getInt(1)));
                 dataAkun.setUsername(rs.getString(3));
                 dataAkun.setPassword(rs.getString(4));
@@ -41,7 +41,8 @@ public class dataAkun {
                 dataAkun.setNoTelp(rs.getString(12));
                 dataAkun.setTanggalLahir(rs.getString(13));
             }
-            System.out.println(rs);
+            System.out.println("idnya"+getId());
+//            System.out.println(rs);
         } catch (SQLException e) {
             System.out.println("Database notfound");
         }
@@ -51,7 +52,7 @@ public class dataAkun {
         boolean hasil = true;
         koneksi.connect();
         try {
-            System.out.println("masuk add");
+//            System.out.println("masuk add");
             Statement stmt = koneksi.con.createStatement();
             queryResult = stmt.executeUpdate(String.format(
                     "insert into dataPengguna (role, username, password, namaUser, noKtp, noRek, namaRek, email, bank, jenisKelamin, noTelp, tanggalLahir) values(%s, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
@@ -67,12 +68,13 @@ public class dataAkun {
     public boolean ubahUser(String username, String password, String namaUser, String noKtp,String noRek,String namaRek, String email, String bank, String jenisKelamin, String noTelp, String tanggal){
         koneksi.connect();
         try {
-            System.out.println("masuk ubah");
+//            System.out.println("masuk ub
+
             Statement stmt = koneksi.con.createStatement();
             queryResult = stmt.executeUpdate(String.format(
                     "UPDATE `dataPengguna` SET `username`='%s',`password`='%s',`namaUser`='%s',`noKtp`='%s',`noRek`='%s',`namaRek`='%s',`email`='%s',`bank`='%s',`jenisKelamin`='%s',`noTelp`='%s',`tanggalLahir`='%s' WHERE idPengguna ='%s'", 
                     username, password, namaUser, noKtp, noRek, namaRek, email, bank, jenisKelamin, noTelp, tanggal, getId())) > 0;
-            System.out.println(queryResult);
+//            System.out.println(queryResult);
         } catch (SQLException e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, e);
@@ -80,6 +82,36 @@ public class dataAkun {
         }
         akunUser(getUsername(), getPassword());
         return queryResult;
+    }
+    
+    public void user() {
+//        int role;
+        koneksi.connect();
+        try {
+            Statement stat = koneksi.con.createStatement();
+            sql = "SELECT * FROM datapengguna WHERE username='"+username+"' AND password='"+password+"'";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {                
+//                System.out.println(rs.getString(3)+" "+rs.getString(4));
+                dataAkun.setId(String.valueOf(rs.getInt(1)));
+                dataAkun.setUsername(rs.getString(3));
+                dataAkun.setPassword(rs.getString(4));
+                dataAkun.setRole(String.valueOf(rs.getInt(2)));
+                dataAkun.setNamauser(rs.getString(5));
+                dataAkun.setNoKtp(rs.getString(6));
+                dataAkun.setNoRek(rs.getString(7));
+                dataAkun.setNamaRek(rs.getString(8));
+                dataAkun.setEmail(rs.getString(9));
+                dataAkun.setBank(rs.getString(10));
+                dataAkun.setJenisKelamin(rs.getString(11));
+                dataAkun.setNoTelp(rs.getString(12));
+                dataAkun.setTanggalLahir(rs.getString(13));
+            }
+            System.out.println("idnya"+getId());
+//            System.out.println(rs);
+        } catch (SQLException e) {
+            System.out.println("Database notfound");
+        }
     }
     
     public static void setEmail(String email) {
